@@ -1,0 +1,247 @@
+:root {
+  --bg: #f2f4f8;
+  --card-bg: #ffffff;
+  --primary: #0077cc;
+  --accent: #17a2b8;
+  --text: #212529;
+  --muted: #6c757d;
+  --border: #dee2e6;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --hover: #005fa3;
+  --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  --highlight-day: #fab1a0;
+  --highlight-pair: #ffeaa7;
+}
+
+[data-theme="dark"] {
+  --bg: #181a1b;
+  --card-bg: #242729;
+  --primary: #4a90e2;
+  --accent: #7ab8ff;
+  --text: #e3e6eb;
+  --muted: #a0a3a6;
+  --border: #3a3f44;
+  --shadow: rgba(0, 0, 0, 0.6);
+  --hover: #6799ff;
+
+  --highlight-day: #d57a6f;
+  --highlight-pair: #d9b872;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font);
+  background-color: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  animation: fadeIn 0.4s ease;
+}
+
+h1 {
+  text-align: center;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin: 0.25rem;
+  font-size: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+button:hover {
+  background-color: var(--hover);
+}
+
+.week-switch {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.week-switch button {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.week-switch button:not(.active) {
+  background-color: var(--card-bg);
+  color: var(--text);
+  border: 1px solid var(--primary);
+}
+
+.week-switch button:hover:not(.active) {
+  background-color: var(--accent);
+  color: white;
+}
+
+.week-switch button.active {
+  background-color: var(--accent);
+  font-weight: 700;
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--card-bg);
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 0.75rem;
+  text-align: center;
+  vertical-align: middle;
+  min-width: 100px;
+  word-break: break-word;
+}
+
+th {
+  background-color: #f1f3f5;
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+
+td.empty {
+  color: var(--muted);
+  background-color: #f9f9f9;
+  font-style: italic;
+}
+
+[data-theme="dark"] table {
+  background-color: var(--card-bg);
+  border: none;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+[data-theme="dark"] th,
+[data-theme="dark"] td {
+  border: 1px solid #3c4146;
+  color: var(--text);
+}
+
+[data-theme="dark"] th {
+  background-color: #2e3237;
+  font-weight: 600;
+}
+
+[data-theme="dark"] td.empty {
+  background-color: #23272a;
+  color: var(--muted);
+  font-style: italic;
+}
+
+/* Підсвічування поточного дня і пари */
+th.current-day {
+  background-color: var(--highlight-day);
+  color: var(--text);
+}
+
+td.current-pair {
+  background-color: var(--highlight-pair);
+}
+
+/* Контейнер для кнопок додавання */
+.add-buttons-container {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* Кнопки додавання пар */
+.add-buttons-container button {
+  background-color: var(--accent);
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  margin: 0.25rem;
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-buttons-container button:hover {
+  background-color: var(--hover);
+}
+
+.actions {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+label {
+  color: var(--accent);
+  cursor: pointer;
+  margin-left: 0.5rem;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+/* Адаптивність */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem;
+  }
+
+  table, th, td {
+    font-size: 0.85rem;
+  }
+
+  button {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .table-wrapper {
+    overflow-x: auto;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

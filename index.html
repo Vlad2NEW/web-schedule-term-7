@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Розклад на 7 семестр</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="./favicon-32x32.png" />
+</head>
+<body>
+  <div class="container">
+    <h1>Розклад на 7 семестр</h1>
+
+    <button id="theme-toggle" aria-label="Перемикання теми">Темна тема</button>
+
+    <div class="week-switch">
+      <button id="showNumerator" class="active">Чисельник</button>
+      <button id="showDenominator">Знаменник</button>
+    </div>
+
+    <div class="table-wrapper">
+      <table id="scheduleTable">
+        <thead>
+          <tr>
+            <th>Пара</th>
+            <th>Понеділок</th>
+            <th>Вівторок</th>
+            <th>Середа</th>
+            <th>Четвер</th>
+            <th>П’ятниця</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Розклад буде тут -->
+        </tbody>
+      </table>
+    </div>
+
+    <div id="addButtonsContainer" class="add-buttons-container">
+      <!-- Кнопки додавання пар по днях -->
+    </div>
+
+    <hr />
+
+    <div class="actions">
+      <button id="exportBtn">Експортувати дані</button>
+      <label>
+        Імпортувати дані
+        <input type="file" id="importInput" accept=".json" style="display:none" />
+      </label>
+      <button id="clearBtn" title="Очистити розклад">Очистити розклад</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
