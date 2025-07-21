@@ -8,7 +8,7 @@
   --border: #dee2e6;
   --shadow: rgba(0, 0, 0, 0.1);
   --hover: #005fa3;
-  --font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font: Arial, 'Segoe UI', Tahoma, "Geneva", Verdana, sans-serif;
 
   --highlight-day: #fab1a0;
   --highlight-pair: #ffeaa7;
@@ -26,7 +26,7 @@
   --hover: #6799ff;
 
   --highlight-day: #d57a6f;
-  --highlight-pair: #d9b872;
+  --highlight-pair: #a47d28;
 }
 
 * {
