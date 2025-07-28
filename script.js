@@ -13,7 +13,7 @@ const defaultData = {
   }))
 };
 
-let diaryData = JSON.parse(localStorage.getItem('diaryData')) || structuredClone(defaultData);
+let diaryData = JSON.parse(localStorage.getItem('diaryData')) || JSON.parse(JSON.stringify(defaultData));
 
 function ensureLessonsLength(day) {
   while (day.lessons.length < 8) {
@@ -180,6 +180,8 @@ function switchWeekType(type) {
   renderDiary();
 }
 
+window.switchWeekType = switchWeekType;
+
 function exportData() {
   const blob = new Blob([JSON.stringify(diaryData)], { type: 'application/json' });
   const link = document.createElement('a');
@@ -187,6 +189,8 @@ function exportData() {
   link.download = 'diary.json';
   link.click();
 }
+
+window.exportData = exportData;
 
 function importData(event) {
   const file = event.target.files[0];
@@ -205,5 +209,6 @@ function importData(event) {
   reader.readAsText(file);
 }
 
-// Початковий виклик для відображення
+window.importData = importData;
+
 renderDiary();
