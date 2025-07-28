@@ -2,55 +2,24 @@
 <html lang="uk">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Розклад на 7 семестр</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="./favicon-32x32.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Електронний щоденник</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-  <div class="container">
-    <h1>Розклад на 7 семестр</h1>
-
-    <button id="theme-toggle" aria-label="Перемикання теми">Темна тема</button>
-
-    <div class="week-switch">
-      <button id="showNumerator" class="active">Чисельник</button>
-      <button id="showDenominator">Знаменник</button>
+  <header>
+    <h1>Електронний щоденник</h1>
+    <div class="button-row">
+      <button onclick="switchWeekType('numerator')">Чисельник</button>
+      <button onclick="switchWeekType('denominator')">Знаменник</button>
+      <button onclick="exportData()">Експортувати</button>
+      <button onclick="document.getElementById('fileInput').click()">Імпортувати</button>
+      <label for="fileInput" class="file-upload-label">Вибрати файл</label>
+      <input type="file" id="fileInput" style="display: none" onchange="importData(event)" />
     </div>
+  </header>
 
-    <div class="table-wrapper">
-      <table id="scheduleTable">
-        <thead>
-          <tr>
-            <th>Пара</th>
-            <th>Понеділок</th>
-            <th>Вівторок</th>
-            <th>Середа</th>
-            <th>Четвер</th>
-            <th>П’ятниця</th>
-          </tr>
-        </thead>
-        <tbody>
-          <!-- Розклад буде тут -->
-        </tbody>
-      </table>
-    </div>
-
-    <div id="addButtonsContainer" class="add-buttons-container">
-      <!-- Кнопки додавання пар по днях -->
-    </div>
-
-    <hr />
-
-    <div class="actions">
-      <button id="exportBtn">Експортувати дані</button>
-      <label>
-        Імпортувати дані
-        <input type="file" id="importInput" accept=".json" style="display:none" />
-      </label>
-      <button id="clearBtn" title="Очистити розклад">Очистити розклад</button>
-    </div>
-  </div>
+  <main id="weekContainer"></main>
 
   <script src="script.js"></script>
 </body>

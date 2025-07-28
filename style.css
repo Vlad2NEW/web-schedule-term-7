@@ -1,247 +1,220 @@
-:root {
-  --bg: #f2f4f8;
-  --card-bg: #ffffff;
-  --primary: #0077cc;
-  --accent: #17a2b8;
-  --text: #212529;
-  --muted: #6c757d;
-  --border: #dee2e6;
-  --shadow: rgba(0, 0, 0, 0.1);
-  --hover: #005fa3;
-  --font: Arial, 'Segoe UI', Tahoma, "Geneva", Verdana, sans-serif;
-
-  --highlight-day: #fab1a0;
-  --highlight-pair: #ffeaa7;
-}
-
-[data-theme="dark"] {
-  --bg: #181a1b;
-  --card-bg: #242729;
-  --primary: #4a90e2;
-  --accent: #7ab8ff;
-  --text: #e3e6eb;
-  --muted: #a0a3a6;
-  --border: #3a3f44;
-  --shadow: rgba(0, 0, 0, 0.6);
-  --hover: #6799ff;
-
-  --highlight-day: #d57a6f;
-  --highlight-pair: #a47d28;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: var(--font);
-  background-color: var(--bg);
-  color: var(--text);
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-
-.container {
-  max-width: 1100px;
-  margin: 2rem auto;
-  padding: 2rem;
-  background-color: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 8px 24px var(--shadow);
-  animation: fadeIn 0.4s ease;
+  font-family: Arial, sans-serif;
+  margin: 0; padding: 0;
+  background: #f5f7fa;
+  color: #222;
 }
 
 h1 {
   text-align: center;
-  color: var(--primary);
-  margin-bottom: 1rem;
+  margin: 1rem 0;
+  color: #0077cc;
 }
 
-button {
-  background-color: var(--primary);
-  color: #fff;
-  border: none;
-  border-radius: 6px;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  margin: 0.25rem;
-  font-size: 1rem;
-  transition: background-color 0.2s ease;
+.day-block {
+  width: 100%;
+  max-width: 900px;
+  background: white;
+  margin: 1rem auto;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-button:hover {
-  background-color: var(--hover);
-}
-
-.week-switch {
+.day-header {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
   text-align: center;
-  margin-bottom: 1rem;
+  color: #004080;
 }
 
-.week-switch button {
-  background-color: var(--primary);
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin: 0 0.25rem;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.date-input {
+  display: block;
+  margin: 0 auto 1rem auto;
+  font-size: 1rem;
+  padding: 0.3rem 0.5rem;
+  width: 120px;
+  border-radius: 5px;
+  border: 1.5px solid #ccc;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  transition: border-color 0.3s ease;
 }
 
-.week-switch button:not(.active) {
-  background-color: var(--card-bg);
-  color: var(--text);
-  border: 1px solid var(--primary);
+.date-input:focus {
+  outline: none;
+  border-color: #0077cc;
+  background-color: #e6f0ff;
 }
 
-.week-switch button:hover:not(.active) {
-  background-color: var(--accent);
-  color: white;
-}
-
-.week-switch button.active {
-  background-color: var(--accent);
-  font-weight: 700;
-  box-shadow: 0 0 8px var(--accent);
-}
-
-.table-wrapper {
-  overflow-x: auto;
-  margin-bottom: 1rem;
-}
-
-table {
+.table {
   width: 100%;
   border-collapse: collapse;
-  background-color: var(--card-bg);
 }
 
-th, td {
-  border: 1px solid var(--border);
-  padding: 0.75rem;
+.table th, .table td {
+  border: 1.5px solid #0077cc;
+  padding: 0.5rem 0.7rem;
   text-align: center;
+  font-family: Arial, sans-serif;
   vertical-align: middle;
-  min-width: 100px;
-  word-break: break-word;
 }
 
-th {
-  background-color: #f1f3f5;
-  font-weight: 600;
-  position: sticky;
-  top: 0;
-  z-index: 2;
+.table th {
+  background-color: #cce5ff;
+  color: #004080;
 }
 
-td.empty {
-  color: var(--muted);
-  background-color: #f9f9f9;
-  font-style: italic;
+.lesson-number {
+  width: 40px;
+  font-weight: bold;
 }
 
-[data-theme="dark"] table {
-  background-color: var(--card-bg);
-  border: none;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.3rem 0.4rem;
+  border: 1.5px solid #0077cc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
 }
 
-[data-theme="dark"] th,
-[data-theme="dark"] td {
-  border: 1px solid #3c4146;
-  color: var(--text);
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  border-color: #004080;
+  background-color: #e6f0ff;
 }
 
-[data-theme="dark"] th {
-  background-color: #2e3237;
-  font-weight: 600;
+textarea {
+  resize: vertical;
+  min-height: 50px;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
-[data-theme="dark"] td.empty {
-  background-color: #23272a;
-  color: var(--muted);
-  font-style: italic;
+.grade-2 {
+  background-color: #ffcccc;
 }
 
-/* Підсвічування поточного дня і пари */
-th.current-day {
-  background-color: var(--highlight-day);
-  color: var(--text);
+.grade-3 {
+  background-color: #ffe5cc;
 }
 
-td.current-pair {
-  background-color: var(--highlight-pair);
+.grade-4 {
+  background-color: #ffffcc;
 }
 
-/* Контейнер для кнопок додавання */
-.add-buttons-container {
+.grade-5 {
+  background-color: #ccffcc;
+}
+
+.done-cell {
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  background-color: #f44336;
+  color: white;
+}
+
+.done-cell.done {
+  background-color: #4caf50;
+}
+
+.button-row {
   text-align: center;
   margin-bottom: 1rem;
 }
 
-/* Кнопки додавання пар */
-.add-buttons-container button {
-  background-color: var(--accent);
-  border-radius: 8px;
-  font-weight: 600;
-  padding: 0.5rem 1.2rem;
-  margin: 0.25rem;
-  border: none;
+.button-row button,
+.button-row .file-upload-label {
+  background-color: #0077cc;
   color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin: 0 0.25rem;
   cursor: pointer;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
+  user-select: none;
 }
 
-.add-buttons-container button:hover {
-  background-color: var(--hover);
+.button-row button:hover,
+.button-row .file-upload-label:hover {
+  background-color: #005fa3;
 }
 
-.actions {
-  text-align: center;
-  margin-top: 1rem;
+.file-upload-label {
+  display: inline-block;
 }
 
-label {
-  color: var(--accent);
-  cursor: pointer;
-  margin-left: 0.5rem;
-}
-
-input[type="file"] {
-  display: none;
-}
-
-/* Адаптивність */
-@media (max-width: 768px) {
-  .container {
-    padding: 1rem;
-    margin: 1rem;
+@media (max-width: 600px) {
+  .day-block {
+    margin: 0.5rem;
+    padding: 0.7rem;
   }
 
-  table, th, td {
-    font-size: 0.85rem;
+  .lesson-number {
+    width: 30px;
   }
 
-  button {
-    font-size: 0.85rem;
-    padding: 0.4rem 0.8rem;
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    font-size: 0.9rem;
   }
 }
 
-@media (max-width: 480px) {
-  .table-wrapper {
-    overflow-x: auto;
-  }
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.3rem 0.4rem;
+  border: none;      /* прибираємо рамки */
+  outline: none;     /* прибираємо контур при фокусі */
+  background-color: transparent;
+  resize: vertical;  /* для textarea */
+  min-height: 50px;
+  max-height: 200px;
+  overflow-y: auto;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  outline: none;
+  border: none;
+  background-color: #e6f0ff;  /* можна залишити легкий фон для фокусу */
+}
+
+/* Прибираємо рамки у інпутів і textarea у стовпці Предмет */
+.table td.subject-cell input,
+.table td.subject-cell textarea {
+  border: none !important;
+  outline: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+.subject-cell input.subject-input {
+  border: none !important;
+  outline: none !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 1rem;
+  padding: 0.3rem 0.4rem;
 }
